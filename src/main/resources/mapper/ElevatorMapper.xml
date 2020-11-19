@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuyun.elevatoradmin.mapper.ElevatorMapper">
+    <resultMap id="elevator" type="elevatorEntity">
+        <result property="eleType" column="ELE_TYPE"></result>
+        <result property="floorsStopsDoor" column="FLOORS_STOPS_DOOR"></result>
+        <result property="eleAddress" column="ELE_ADDRESS"></result>
+        <result property="eleProject" column="ELE_PROJECT"></result>
+        <result property="projectCode" column="PROJECT_CODE"></result>
+        <result property="unitCode" column="unit_code"></result>
+        <result property="maintainId" column="MAINTAIN_ID"></result>
+        <result property="useCompanyId" column="USE_COMPANY_ID"></result>
+        <result property="propertyId" column="PROJECT_ID"></result>
+        <result property="manufacturerId" column="MANUFACTURER_ID"></result>
+        <result property="manufacturerName" column="MANUFACTURER_NAME"></result>
+        <result property="badCodes" column="BAD_CODES"></result>
+        <result property="warnNames" column="WARN_NAMES"></result>
+        <result property="warnPhones" column="WARN_PHONES"></result>
+        <result property="badNum" column="BAD_NUM"></result>
+        <result property="advertisingScreen" column="ADVERTISING_SCREEN"></result>
+    </resultMap>
+    <select id="getElevators" resultMap="elevator">
+        SELECT * FROM elevatorlist
+    </select>
+</mapper>
