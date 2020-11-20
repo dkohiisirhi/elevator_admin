@@ -52,6 +52,7 @@ public class ElevatorServiceImpl implements ElevatorService {
         elevatorChangeInfoVo.setFloor((String) data.get("floor"));
         elevatorChangeInfoVo.setDirection((String) data.get("direction"));
         elevatorChangeInfoVo.setIsOpen((String) data.get("isOpen"));
+        elevatorChangeInfoVo.setOpenNum((String) data.get("openNum"));
         elevatorChangeInfoVo.setRunMileage((String) data.get("runMileage"));
         return elevatorChangeInfoVo;
     }

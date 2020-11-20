@@ -10,4 +10,5 @@ public class ElevatorChangeInfoVo {
     private String isOpen;
     private String direction;
     private String runMileage;
+    private String openNum;
 }
