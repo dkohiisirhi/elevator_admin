@@ -31,22 +31,17 @@ public class ElevatorServiceImpl implements ElevatorService {
         List<ElevatorInfoVo> collect = elevators.stream().map(item -> {
             ElevatorInfoVo elevatorInfoVo = new ElevatorInfoVo();
             elevatorInfoVo.setEleno(item.getEleno());
-            elevatorInfoVo.setSpeed(item.getSpeed());
-            elevatorInfoVo.setFloorsStopsDoor(item.getFloorsStopsDoor());
-            Map<String,Object> elevatorData = findElevatorData(item.getEleno());
-            elevatorInfoVo.setDirection((String) elevatorData.get("direction"));
-            elevatorInfoVo.setIsOpen((String) elevatorData.get("isOpen"));
-            elevatorInfoVo.setFloor((String) elevatorData.get("floor"));
-            elevatorInfoVo.setOpenNum((String) elevatorData.get("openNum"));
-            elevatorInfoVo.setRunMileage(elevatorData.get("runMileage")+"");
+            elevatorInfoVo.setDname(item.getDname());
+            elevatorInfoVo.setModel(item.getModel());
+            elevatorInfoVo.setBrand(item.getBrand());
+            elevatorInfoVo.setRload(item.getRload());
+            elevatorInfoVo.setEleProject(item.getEleProject());
+            elevatorInfoVo.setMaintain(item.getMaintain());
+            elevatorInfoVo.setLasttime(item.getLasttime());
             return elevatorInfoVo;
         }).collect(Collectors.toList());
         return  collect;
     }
-
-<<<<<<< HEAD
-    public Map<String,Object>  findElevatorData(String msg) {
-=======
     @Override
     public ElevatorChangeInfoVo getElevatorChange(String eleNo){
         Map data = findElevatorData(eleNo);
@@ -60,8 +55,7 @@ public class ElevatorServiceImpl implements ElevatorService {
         return elevatorChangeInfoVo;
     }
 
-    public Map findElevatorData(String msg) {
->>>>>>> 518c37a031d34b92f1c167774586b14635b1dac3
+    public Map findElevatorData(String msg){
         ElevatorCode[] values = ElevatorCode.values();
         int elePort = 0;
         for (ElevatorCode value : values) {
