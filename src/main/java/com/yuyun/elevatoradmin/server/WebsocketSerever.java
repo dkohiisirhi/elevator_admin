@@ -3,6 +3,7 @@ package com.yuyun.elevatoradmin.server;
 import com.alibaba.fastjson.JSON;
 import com.yuyun.elevatoradmin.entity.ElevatorEntity;
 import com.yuyun.elevatoradmin.service.ElevatorService;
+import com.yuyun.elevatoradmin.vo.ElevatorChangeInfoVo;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,12 +39,6 @@ public class WebsocketSerever {
 //            log.info("有新的客户端连接了: {}", session.getId());
         //将新用户存入在线的组
         clients.put(session.getId(), session);
-//        List<ElevatorEntity> elevators = elevatorService.getElevators();
-////        for (ElevatorEntity e:elevators) {
-////
-////        }
-//        String s = JSON.toJSONString(elevators);
-//        session.getAsyncRemote().sendText(s);
     }
 
     /**
@@ -76,8 +71,8 @@ public class WebsocketSerever {
     @OnMessage
     public void onMessage(String message) {
 //            log.info("服务端收到客户端发来的消息: {}", message);
-       elevatorService.getElevatorChange(message);
-        String s = JSON.toJSONString(elevatorService);
+        ElevatorChangeInfoVo elevatorChange = elevatorService.getElevatorChange(message);
+        String s = JSON.toJSONString(elevatorChange);
         this.sendAll(s);
 
     }
