@@ -32,18 +32,18 @@ public class ElevatorServiceImpl implements ElevatorService {
             elevatorInfoVo.setEleno(item.getEleno());
             elevatorInfoVo.setSpeed(item.getSpeed());
             elevatorInfoVo.setFloorsStopsDoor(item.getFloorsStopsDoor());
-            Map elevatorData = findElevatorData(item.getEleno());
-            elevatorInfoVo.setFloor((String) elevatorData.get("floor"));
+            Map<String,Object> elevatorData = findElevatorData(item.getEleno());
             elevatorInfoVo.setDirection((String) elevatorData.get("direction"));
             elevatorInfoVo.setIsOpen((String) elevatorData.get("isOpen"));
+            elevatorInfoVo.setFloor((String) elevatorData.get("floor"));
             elevatorInfoVo.setOpenNum((String) elevatorData.get("openNum"));
-            elevatorInfoVo.setRunMileage((String) elevatorData.get("runMileage"));
+            elevatorInfoVo.setRunMileage(elevatorData.get("runMileage")+"");
             return elevatorInfoVo;
         }).collect(Collectors.toList());
         return  collect;
     }
 
-    public Map findElevatorData(String msg) {
+    public Map<String,Object>  findElevatorData(String msg) {
         ElevatorCode[] values = ElevatorCode.values();
         int elePort = 0;
         for (ElevatorCode value : values) {
@@ -52,17 +52,17 @@ public class ElevatorServiceImpl implements ElevatorService {
             }
         }
         //TODO 待做
-        Map elevatorMap = new HashMap();
+        Map<String,Object> elevatorMap = new HashMap<String,Object>();
         String floor = (String) redisTemplate.opsForValue().get(elePort+":floor");
         String isOpen = (String) redisTemplate.opsForValue().get(elePort+":isOpen");
-        String direciton = (String) redisTemplate.opsForValue().get(elePort+":direction");
-        String openNum = (String) redisTemplate.opsForValue().get(msg+":openNum");
-        String runMileage = (String) redisTemplate.opsForValue().get(elePort+":runMileage");
-        elevatorMap.put("floor", floor);
-        elevatorMap.put("isOpen", isOpen);
-        elevatorMap.put("direciton", direciton);
-        elevatorMap.put("openNum", openNum);
-        elevatorMap.put("runMileage", runMileage == null? 0: runMileage.substring(0,runMileage.indexOf(".")+2));
+        String direction = (String) redisTemplate.opsForValue().get(elePort+":direction");
+        Integer openNum = (Integer) redisTemplate.opsForValue().get(elePort+":openNum");
+        String runMileage = redisTemplate.opsForValue().get(msg+":runMileage")+"";
+        elevatorMap.put("floor", floor == null?"已离线":floor);
+        elevatorMap.put("isOpen", "1".equals(isOpen)?"开门":"关门");
+        elevatorMap.put("direction","1".equals(direction)?"上行":("-1".equals(direction)?"下行":"平层"));
+        elevatorMap.put("openNum", openNum+"");
+        elevatorMap.put("runMileage", runMileage == null? "0": runMileage.substring(0,runMileage.indexOf(".")+2));
         return elevatorMap;
     }
 }
