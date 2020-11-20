@@ -33,12 +33,12 @@ public class ElevatorServiceImpl implements ElevatorService {
             elevatorInfoVo.setEleno(item.getEleno());
             elevatorInfoVo.setSpeed(item.getSpeed());
             elevatorInfoVo.setFloorsStopsDoor(item.getFloorsStopsDoor());
-            Map elevatorData = findElevatorData(item.getEleno());
-            elevatorInfoVo.setFloor((String) elevatorData.get("floor"));
+            Map<String,Object> elevatorData = findElevatorData(item.getEleno());
             elevatorInfoVo.setDirection((String) elevatorData.get("direction"));
             elevatorInfoVo.setIsOpen((String) elevatorData.get("isOpen"));
+            elevatorInfoVo.setFloor((String) elevatorData.get("floor"));
             elevatorInfoVo.setOpenNum((String) elevatorData.get("openNum"));
-            elevatorInfoVo.setRunMileage((String) elevatorData.get("runMileage"));
+            elevatorInfoVo.setRunMileage(elevatorData.get("runMileage")+"");
             return elevatorInfoVo;
         }).collect(Collectors.toList());
         return  collect;
