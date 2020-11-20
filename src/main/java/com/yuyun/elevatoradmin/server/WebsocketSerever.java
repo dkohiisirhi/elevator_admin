@@ -85,7 +85,9 @@ public class WebsocketSerever {
     private void sendAll(String message) {
 
         for (Map.Entry<String, Session> sessionEntry : clients.entrySet()) {
-            sessionEntry.getValue().getAsyncRemote().sendText(message);
+            synchronized (sessionEntry) {
+                sessionEntry.getValue().getAsyncRemote().sendText(message);
+            }
         }
 
     }
