@@ -44,9 +44,7 @@ public class ElevatorServiceImpl implements ElevatorService {
         return  collect;
     }
 
-<<<<<<< HEAD
-    public Map<String,Object>  findElevatorData(String msg) {
-=======
+
     @Override
     public ElevatorChangeInfoVo getElevatorChange(String eleNo){
         Map data = findElevatorData(eleNo);
@@ -60,7 +58,6 @@ public class ElevatorServiceImpl implements ElevatorService {
     }
 
     public Map findElevatorData(String msg) {
->>>>>>> 518c37a031d34b92f1c167774586b14635b1dac3
         ElevatorCode[] values = ElevatorCode.values();
         int elePort = 0;
         for (ElevatorCode value : values) {
