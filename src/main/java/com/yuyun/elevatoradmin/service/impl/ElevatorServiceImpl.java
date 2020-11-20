@@ -4,6 +4,7 @@ import com.yuyun.elevatoradmin.dao.ElevatorDao;
 import com.yuyun.elevatoradmin.entity.ElevatorEntity;
 import com.yuyun.elevatoradmin.enums.ElevatorCode;
 import com.yuyun.elevatoradmin.service.ElevatorService;
+import com.yuyun.elevatoradmin.vo.ElevatorChangeInfoVo;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -41,6 +42,18 @@ public class ElevatorServiceImpl implements ElevatorService {
             return elevatorInfoVo;
         }).collect(Collectors.toList());
         return  collect;
+    }
+
+    @Override
+    public ElevatorChangeInfoVo getElevatorChange(String eleNo){
+        Map data = findElevatorData(eleNo);
+        ElevatorChangeInfoVo elevatorChangeInfoVo = new ElevatorChangeInfoVo();
+        elevatorChangeInfoVo.setEleno(eleNo);
+        elevatorChangeInfoVo.setFloor((String) data.get("floor"));
+        elevatorChangeInfoVo.setDirection((String) data.get("direction"));
+        elevatorChangeInfoVo.setIsOpen((String) data.get("isOpen"));
+        elevatorChangeInfoVo.setRunMileage((String) data.get("runMileage"));
+        return elevatorChangeInfoVo;
     }
 
     public Map findElevatorData(String msg) {

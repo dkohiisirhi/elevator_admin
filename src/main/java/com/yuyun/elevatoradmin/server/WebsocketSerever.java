@@ -76,11 +76,8 @@ public class WebsocketSerever {
     @OnMessage
     public void onMessage(String message) {
 //            log.info("服务端收到客户端发来的消息: {}", message);
-        List<ElevatorInfoVo> elevators = elevatorService.getElevators();
-//        for (ElevatorEntity e:elevators) {
-//
-//        }
-        String s = JSON.toJSONString(elevators);
+       elevatorService.getElevatorChange(message);
+        String s = JSON.toJSONString(elevatorService);
         this.sendAll(s);
 
     }
