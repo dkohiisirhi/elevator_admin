@@ -31,20 +31,22 @@ public class ElevatorServiceImpl implements ElevatorService {
         List<ElevatorInfoVo> collect = elevators.stream().map(item -> {
             ElevatorInfoVo elevatorInfoVo = new ElevatorInfoVo();
             elevatorInfoVo.setEleno(item.getEleno());
-            elevatorInfoVo.setSpeed(item.getSpeed());
-            elevatorInfoVo.setFloorsStopsDoor(item.getFloorsStopsDoor());
-            Map<String,Object> elevatorData = findElevatorData(item.getEleno());
-            elevatorInfoVo.setDirection((String) elevatorData.get("direction"));
-            elevatorInfoVo.setIsOpen((String) elevatorData.get("isOpen"));
-            elevatorInfoVo.setFloor((String) elevatorData.get("floor"));
-            elevatorInfoVo.setOpenNum((String) elevatorData.get("openNum"));
-            elevatorInfoVo.setRunMileage(elevatorData.get("runMileage")+"");
+            elevatorInfoVo.setDname(item.getDname());
+            elevatorInfoVo.setModel(item.getModel());
+            elevatorInfoVo.setBrand(item.getBrand());
+            elevatorInfoVo.setRload(item.getRload());
+            elevatorInfoVo.setEleProject(item.getEleProject());
+            elevatorInfoVo.setMaintain(item.getMaintain());
+            elevatorInfoVo.setLasttime(item.getLasttime());
             return elevatorInfoVo;
         }).collect(Collectors.toList());
         return  collect;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 240bd773a541bb4c457c766899a233ed80eb26bf
     @Override
     public ElevatorChangeInfoVo getElevatorChange(String eleNo){
         Map data = findElevatorData(eleNo);
@@ -53,11 +55,16 @@ public class ElevatorServiceImpl implements ElevatorService {
         elevatorChangeInfoVo.setFloor((String) data.get("floor"));
         elevatorChangeInfoVo.setDirection((String) data.get("direction"));
         elevatorChangeInfoVo.setIsOpen((String) data.get("isOpen"));
+        elevatorChangeInfoVo.setOpenNum((String) data.get("openNum"));
         elevatorChangeInfoVo.setRunMileage((String) data.get("runMileage"));
         return elevatorChangeInfoVo;
     }
 
+<<<<<<< HEAD
     public Map findElevatorData(String msg) {
+=======
+    public Map findElevatorData(String msg){
+>>>>>>> 240bd773a541bb4c457c766899a233ed80eb26bf
         ElevatorCode[] values = ElevatorCode.values();
         int elePort = 0;
         for (ElevatorCode value : values) {

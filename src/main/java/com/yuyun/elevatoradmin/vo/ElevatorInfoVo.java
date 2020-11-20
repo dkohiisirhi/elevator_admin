@@ -2,15 +2,17 @@ package com.yuyun.elevatoradmin.vo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class ElevatorInfoVo {
 
     private String eleno;
-    private String floor;
-    private String isOpen;
-    private String direction;
-    private String openNum;
-    private String floorsStopsDoor;
-    private String speed;
-    private String runMileage;
+    private String dname;
+    private String model;
+    private String brand;
+    private String rload;
+    private String eleProject;
+    private String maintain;
+    private Date lasttime;
 }
