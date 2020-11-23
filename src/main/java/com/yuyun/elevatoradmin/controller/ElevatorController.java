@@ -1,9 +1,7 @@
 package com.yuyun.elevatoradmin.controller;
 
-import com.yuyun.elevatoradmin.entity.ElevatorEntity;
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +22,12 @@ public class ElevatorController {
         List<ElevatorInfoVo> elevators = elevatorService.getElevators();
         Map<String,Object> map=new HashMap<>();
         map.put("data",elevators);
+        return map;
+    }
+    @RequestMapping("/elevator/isonline")
+    @ResponseBody
+    public Map<String,Object> getElevatorIsOnline(){
+        Map<String, Object> map = elevatorService.getElevatorIsOnline();
         return map;
     }
 }

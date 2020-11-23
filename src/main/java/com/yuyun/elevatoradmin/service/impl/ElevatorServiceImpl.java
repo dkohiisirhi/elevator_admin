@@ -56,6 +56,21 @@ public class ElevatorServiceImpl implements ElevatorService {
         return elevatorChangeInfoVo;
     }
 
+    @Override
+    public Map<String, Object> getElevatorIsOnline() {
+        List<ElevatorEntity> elevators = elevatorDao.getElevators();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("size",elevators.size());
+        int online=0;
+        for (ElevatorEntity e :elevators) {
+if (e.getElestate().equals("运行"))
+    online++;
+        }
+        map.put("online",online);
+        map.put("notonline",elevators.size()-online);
+        return map;
+    }
+
 
     public Map findElevatorData(String msg){
         ElevatorCode[] values = ElevatorCode.values();

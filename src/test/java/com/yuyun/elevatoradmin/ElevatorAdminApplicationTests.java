@@ -1,17 +1,20 @@
 package com.yuyun.elevatoradmin;
 
-import com.yuyun.elevatoradmin.entity.ElevatorEntity;
-import com.yuyun.elevatoradmin.mapper.ElevatorMapper;
+import com.yuyun.elevatoradmin.service.ElevatorService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class ElevatorAdminApplicationTests {
+//    @Autowired
+//    ElevatorService elevatorService;
     @Test
     void contextLoads() {
+//        Map<String, Object> elevatorIsOnline = elevatorService.getElevatorIsOnline();
+//        System.out.println(elevatorIsOnline);
     }
 
 }
