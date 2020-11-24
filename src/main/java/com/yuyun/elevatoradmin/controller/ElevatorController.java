@@ -2,6 +2,7 @@ package com.yuyun.elevatoradmin.controller;
 
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
+import com.yuyun.elevatoradmin.vo.ElevatorRunMileageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +30,16 @@ public class ElevatorController {
     public Map<String,Object> getElevatorIsOnline(){
         Map<String, Object> map = elevatorService.getElevatorIsOnline();
         return map;
+    }
+
+    /**
+     * 获取电梯里程数据
+     * @return
+     */
+    @RequestMapping("/elevator/runMileage")
+    @ResponseBody
+    public List<ElevatorRunMileageVo> getElevatorRunMileage(){
+        List<ElevatorRunMileageVo> list = elevatorService.getElevatorRunMilege();
+        return list;
     }
 }

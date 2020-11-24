@@ -6,6 +6,7 @@ import com.yuyun.elevatoradmin.enums.ElevatorCode;
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorChangeInfoVo;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
+import com.yuyun.elevatoradmin.vo.ElevatorRunMileageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -69,6 +70,20 @@ if (e.getElestate().equals("运行"))
         map.put("online",online);
         map.put("notonline",elevators.size()-online);
         return map;
+    }
+
+    @Override
+    public List<ElevatorRunMileageVo> getElevatorRunMilege() {
+        Map map = new HashMap();
+        List<ElevatorEntity> elevators = elevatorDao.getElevators();
+        List<ElevatorRunMileageVo> collect = elevators.stream().map(item -> {
+            ElevatorRunMileageVo elevatorRunMileageVo = new ElevatorRunMileageVo();
+            elevatorRunMileageVo.setEleno(item.getEleno());
+            elevatorRunMileageVo.setRunMileage(redisTemplate.opsForValue().get(item.getEleno() + ":runMileage") + "");
+            return elevatorRunMileageVo;
+        }).collect(Collectors.toList());
+
+        return collect;
     }
 
 
