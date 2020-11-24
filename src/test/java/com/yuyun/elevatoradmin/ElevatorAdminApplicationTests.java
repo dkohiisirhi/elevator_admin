@@ -9,12 +9,11 @@ import java.util.Map;
 
 @SpringBootTest
 class ElevatorAdminApplicationTests {
-//    @Autowired
-//    ElevatorService elevatorService;
+    @Autowired
+    ElevatorService elevatorService;
     @Test
     void contextLoads() {
-//        Map<String, Object> elevatorIsOnline = elevatorService.getElevatorIsOnline();
-//        System.out.println(elevatorIsOnline);
+elevatorService.getElevatorBrand();
     }
 
 }

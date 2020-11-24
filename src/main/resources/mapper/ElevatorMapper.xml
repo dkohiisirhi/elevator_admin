@@ -22,4 +22,7 @@
     <select id="getElevators" resultMap="elevator">
         SELECT * FROM elevatorlist
     </select>
+    <select id="getElevatorBrand" resultType="ElevatorBrand">
+        SELECT brand,COUNT(brand) AS con FROM elevatorlist GROUP BY brand
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.yuyun.elevatoradmin.dao;
 
+import com.yuyun.elevatoradmin.entity.ElevatorBrand;
 import com.yuyun.elevatoradmin.entity.ElevatorEntity;
 import com.yuyun.elevatoradmin.mapper.ElevatorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,8 @@ public class ElevatorDao {
     public List<ElevatorEntity> getElevators(){
         List<ElevatorEntity> elevators = elevatorMapper.getElevators();
         return elevators;
+    }
+    public List<ElevatorBrand> getElevatorBrand(){
+        return elevatorMapper.getElevatorBrand();
     }
 }

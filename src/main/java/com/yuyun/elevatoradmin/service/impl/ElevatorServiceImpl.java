@@ -1,8 +1,10 @@
 package com.yuyun.elevatoradmin.service.impl;
 
 import com.yuyun.elevatoradmin.dao.ElevatorDao;
+import com.yuyun.elevatoradmin.entity.ElevatorBrand;
 import com.yuyun.elevatoradmin.entity.ElevatorEntity;
 import com.yuyun.elevatoradmin.enums.ElevatorCode;
+import com.yuyun.elevatoradmin.mapper.ElevatorMapper;
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorChangeInfoVo;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
@@ -84,6 +86,11 @@ if (e.getElestate().equals("运行"))
         }).collect(Collectors.toList());
 
         return collect;
+    }
+
+    @Override
+    public List<ElevatorBrand> getElevatorBrand() {
+        return elevatorDao.getElevatorBrand();
     }
 
 

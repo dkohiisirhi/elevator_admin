@@ -1,5 +1,6 @@
 package com.yuyun.elevatoradmin.controller;
 
+import com.yuyun.elevatoradmin.entity.ElevatorBrand;
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
 import com.yuyun.elevatoradmin.vo.ElevatorRunMileageVo;
@@ -42,4 +43,15 @@ public class ElevatorController {
         List<ElevatorRunMileageVo> list = elevatorService.getElevatorRunMilege();
         return list;
     }
+    /**
+     * 获取电梯里程数据
+     * @return
+     */
+    @RequestMapping("/elevator/brands")
+    @ResponseBody
+    public List<ElevatorBrand> getElevatorBrand(){
+        List<ElevatorBrand> list = elevatorService.getElevatorBrand();
+        return list;
+    }
+
 }
