@@ -25,4 +25,9 @@
     <select id="getElevatorBrand" resultType="ElevatorBrand">
         SELECT brand,COUNT(brand) AS con FROM elevatorlist GROUP BY brand
     </select>
+    <select id="getElevatorProject" resultType="com.yuyun.elevatoradmin.vo.ElevatorProjectVo">
+        SELECT e.ele_project AS projectName,e.all_number AS all_number,IFNULL(p.run_number,0) AS run_number FROM (SELECT COUNT(*) AS all_number,project_code,ele_project FROM elevatorList  GROUP BY project_code) e
+LEFT JOIN (SELECT COUNT(*) AS run_number,project_code,ele_project FROM elevatorlist GROUP BY project_code,eleState HAVING eleState = '运行') p
+ON e.project_code = p.project_code
+    </select>
 </mapper>

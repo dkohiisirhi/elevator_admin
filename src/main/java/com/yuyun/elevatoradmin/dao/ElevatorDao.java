@@ -3,6 +3,7 @@ package com.yuyun.elevatoradmin.dao;
 import com.yuyun.elevatoradmin.entity.ElevatorBrand;
 import com.yuyun.elevatoradmin.entity.ElevatorEntity;
 import com.yuyun.elevatoradmin.mapper.ElevatorMapper;
+import com.yuyun.elevatoradmin.vo.ElevatorProjectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
@@ -26,5 +27,9 @@ public class ElevatorDao {
     }
     public List<ElevatorBrand> getElevatorBrand(){
         return elevatorMapper.getElevatorBrand();
+    }
+
+    public List<ElevatorProjectVo> getElevatorProject(){
+        return elevatorMapper.getElevatorProject();
     }
 }

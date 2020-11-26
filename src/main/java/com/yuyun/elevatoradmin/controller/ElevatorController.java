@@ -3,6 +3,7 @@ package com.yuyun.elevatoradmin.controller;
 import com.yuyun.elevatoradmin.entity.ElevatorBrand;
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
+import com.yuyun.elevatoradmin.vo.ElevatorProjectVo;
 import com.yuyun.elevatoradmin.vo.ElevatorRunMileageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,6 +52,17 @@ public class ElevatorController {
     @ResponseBody
     public List<ElevatorBrand> getElevatorBrand(){
         List<ElevatorBrand> list = elevatorService.getElevatorBrand();
+        return list;
+    }
+
+    /**
+     * 获取所有楼盘对应的电梯数量
+     * @return
+     */
+    @RequestMapping("/elevator/projects")
+    @ResponseBody
+    public List<ElevatorProjectVo> getElevatorProject(){
+        List<ElevatorProjectVo> list = elevatorService.getElevatorProject();
         return list;
     }
 

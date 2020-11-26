@@ -8,6 +8,7 @@ import com.yuyun.elevatoradmin.mapper.ElevatorMapper;
 import com.yuyun.elevatoradmin.service.ElevatorService;
 import com.yuyun.elevatoradmin.vo.ElevatorChangeInfoVo;
 import com.yuyun.elevatoradmin.vo.ElevatorInfoVo;
+import com.yuyun.elevatoradmin.vo.ElevatorProjectVo;
 import com.yuyun.elevatoradmin.vo.ElevatorRunMileageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -91,6 +92,12 @@ if (e.getElestate().equals("运行"))
     @Override
     public List<ElevatorBrand> getElevatorBrand() {
         return elevatorDao.getElevatorBrand();
+    }
+
+    @Override
+    public List<ElevatorProjectVo> getElevatorProject() {
+        List<ElevatorProjectVo> elevators = elevatorDao.getElevatorProject();
+        return elevators;
     }
 
 
